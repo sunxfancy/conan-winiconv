@@ -13,6 +13,13 @@ class GTestConan(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     exports = "CMakeLists.txt"
     url="http://github.com/lasote/conan-winiconv"
+    license="https://github.com/win-iconv/win-iconv"
+    
+    def config(self):
+        try: # Try catch can be removed when conan 0.8 is released
+            del self.settings.compiler.libcxx 
+        except: 
+            pass
     
     def conan_info(self):
         self.info.settings.compiler.runtime = "MDd" if self.settings.build_type == "Debug" else "MD"

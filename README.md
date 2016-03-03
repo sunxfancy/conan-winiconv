@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.org/lasote/conan-gtest.svg)](https://travis-ci.org/lasote/conan-gtest)
+[![Build Status](https://travis-ci.org/lasote/conan-winiconv.svg)](https://travis-ci.org/lasote/conan-winiconv)
 
 
-# conan-gtest
+# conan-winiconv
 
-[Conan.io](https://conan.io) package for Google test library
+[Conan.io](https://conan.io) package for Win-iconv library
 
-The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/gtest/1.7.0/lasote/stable).
+The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/winiconv/1.14.0/lasote/stable).
 
 ## Build packages
 
@@ -15,23 +15,23 @@ Download conan client from [Conan.io](https://conan.io) and run:
     
 ## Upload packages to server
 
-    $ conan upload gtest/1.7.0@lasote/stable --all
+    $ conan upload winiconv/1.14.0@lasote/stable --all
     
 ## Reuse the packages
 
 ### Basic setup
 
-    $ conan install gtest/1.7.0@lasote/stable
+    $ conan install winiconv/1.14.0@lasote/stable
     
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
     
     [requires]
-    gtest/1.7.0@lasote/stable
+    winiconv/1.14.0@lasote/stable
 
     [options]
-    gtest:shared=true # false
+    winiconv:shared=true # false
     
     [generators]
     txt
