@@ -5,7 +5,7 @@ environment:
     PYTHON_ARCH: "32"
     
     CONAN_UPLOAD: 1
-    CONAN_REFERENCE: "winiconv/1.14.0"
+    CONAN_REFERENCE: "winiconv/1.14.1"
     CONAN_USERNAME: "sunxfancy"
     CONAN_CHANNEL: "ci"
     CONAN_TOTAL_PAGES: 4

@@ -16,7 +16,8 @@ class DefaultNameConan(ConanFile):
     version = "0.1"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    requires = "winiconv/1.14.0@%s/%s" % (username, channel)
+    requires = "winiconv/1.14.1@%s/%s" % (username, channel)
+    default_options = "winiconv:shared=False"
 
     def build(self):
         cmake = CMake(self.settings)
@@ -25,6 +26,7 @@ class DefaultNameConan(ConanFile):
 
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
+        self.copy(pattern="*.lib", dst="lib", src="lib")
 
     def test(self):
         self.run("cd bin && .%smytest" % os.sep)

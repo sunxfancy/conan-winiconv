@@ -7,10 +7,13 @@ from conans import CMake
 
 class GTestConan(ConanFile):
     name = "winiconv"
-    version = "1.14"
+    version = "1.14.1"
+    license = "MIT"
     ZIP_FOLDER_NAME = "win-iconv-master"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
+    options = {"shared": [True, False]}
+    default_options = "shared=False"
     url="http://github.com/sunxfancy/conan-winiconv"
     license="https://github.com/win-iconv/win-iconv"
 
@@ -26,10 +29,11 @@ class GTestConan(ConanFile):
 
     def build(self):
         cmake = CMake(self.settings)
+        shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         self.output.warn(cmake.command_line)
         self.run("cd %s && mkdir _build" % self.ZIP_FOLDER_NAME)
         cd_build = "cd %s/_build" % self.ZIP_FOLDER_NAME
-        self.run('%s && cmake .. %s -DBUILD_SHARED_LIBS=ON' % (cd_build, cmake.command_line))
+        self.run('%s && cmake .. %s %s' % (cd_build, cmake.command_line, shared))
         self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
 
     def package(self):
