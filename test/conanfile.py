@@ -3,8 +3,8 @@ from conans import CMake
 import os
 
 ############### CONFIGURE THESE VALUES ##################
-default_user = "lasote"
-default_channel = "testing"
+default_user = "sunxfancy"
+default_channel = "ci"
 #########################################################
 
 channel = os.getenv("CONAN_CHANNEL", default_channel)
@@ -25,6 +25,6 @@ class DefaultNameConan(ConanFile):
 
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
-        
+
     def test(self):
         self.run("cd bin && .%smytest" % os.sep)
