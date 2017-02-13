@@ -11,7 +11,6 @@ class GTestConan(ConanFile):
     ZIP_FOLDER_NAME = "win-iconv-master"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
-    exports = "CMakeLists.txt"
     url="http://github.com/sunxfancy/conan-winiconv"
     license="https://github.com/win-iconv/win-iconv"
 
@@ -41,11 +40,11 @@ class GTestConan(ConanFile):
 
     def package(self):
         # Copying headers
-        self.copy(pattern="*.h", dst="include", src="%s/include" % self.ZIP_FOLDER_NAME, keep_path=True)
+        self.copy(pattern="*.h", dst="include", src="%s" % self.ZIP_FOLDER_NAME, keep_path=True)
 
         # Copying dynamic libs
-        self.copy(pattern="*.dll", dst="bin", src="%s/_build" % self.ZIP_FOLDER_NAME, keep_path=False)
-        self.copy(pattern="*.lib", dst="lib", src="%s/_build" % self.ZIP_FOLDER_NAME, keep_path=False)
+        self.copy(pattern="*.dll", dst="bin", src="%s/_build/Release" % self.ZIP_FOLDER_NAME, keep_path=False)
+        self.copy(pattern="*.lib", dst="lib", src="%s/_build/Release" % self.ZIP_FOLDER_NAME, keep_path=False)
 
 
     def package_info(self):
