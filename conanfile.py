@@ -7,7 +7,7 @@ from conans import CMake
 
 class GTestConan(ConanFile):
     name = "winiconv"
-    version = "1.14.0"
+    version = "1.14"
     ZIP_FOLDER_NAME = "win-iconv-master"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
@@ -15,13 +15,7 @@ class GTestConan(ConanFile):
     license="https://github.com/win-iconv/win-iconv"
 
     def config(self):
-        try: # Try catch can be removed when conan 0.8 is released
-            del self.settings.compiler.libcxx
-        except:
-            pass
-
-    def conan_info(self):
-        self.info.settings.compiler.runtime = "MDd" if self.settings.build_type == "Debug" else "MD"
+        del self.settings.compiler.libcxx
 
     def source(self):
         zip_name = "master.zip"
@@ -45,6 +39,8 @@ class GTestConan(ConanFile):
         # Copying dynamic libs
         self.copy(pattern="*.dll", dst="bin", src="%s/_build/Release" % self.ZIP_FOLDER_NAME, keep_path=False)
         self.copy(pattern="*.lib", dst="lib", src="%s/_build/Release" % self.ZIP_FOLDER_NAME, keep_path=False)
+        self.copy(pattern="*.dll", dst="bin", src="%s/_build/Debug" % self.ZIP_FOLDER_NAME, keep_path=False)
+        self.copy(pattern="*.lib", dst="lib", src="%s/_build/Debug" % self.ZIP_FOLDER_NAME, keep_path=False)
 
 
     def package_info(self):
