@@ -1,7 +1,10 @@
 #include <iostream>
 #include <fstream>
+
+#define ICONV_CONST 
 #include <iconv.h>
- 
+
+
 int main(int argc, char *argv[])
 {
     char src[] = "abcčde";
