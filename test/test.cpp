@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
  
     fprintf(stderr,"in: %s\n",src);
  
-    const char * pIn = src;
+    char * pIn = src;
     char * pOut = ( char*)dst;
  
     iconv_t conv = iconv_open("UTF-8","CP1250");
